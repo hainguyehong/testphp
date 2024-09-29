@@ -19,42 +19,54 @@ session_start();
         <form method="post" id="form">
             <label for="numQuestion">Nhập số lượng số cần sắp xếp:</label>
             <div>
-                <input type="number" name="numQuestion" id="numQuestion" value="<?php if (isset($_POST['numQuestion'])) echo $_POST['numQuestion']; ?>" min="2" max="10">
+                <input type="number" name="numQuestion" id="numQuestion" value="<?php if (isset($_POST['numQuestion'])) {
+                    echo $_POST['numQuestion'];
+                } ?>" min="2" max="10">
                 <br>
                 <?php
                 if (isset($_POST['gui']) && empty($_POST['numQuestion'])) {
                     echo "<span class=\"error\">Không để trống</span>";
                 }
-                ?>
+?>
             </div>
             <label>Dạng bài:</label>
             <div style="display: block">
                 <div>
-                    <input type="radio" name="dang" id="dang1" value="dang1" <?php if (isset($_POST['dang']) && $_POST['dang'] == 'dang1') echo 'checked'; ?>>
+                    <input type="radio" name="dang" id="dang1" value="dang1" <?php if (isset($_POST['dang']) && $_POST['dang'] == 'dang1') {
+                        echo 'checked';
+                    } ?>>
                     <label for="dang1">Trả lời 1 lần</label> <br>
-                    <input type="radio" name="dang" id="dang2" value="dang2" <?php if (isset($_POST['dang']) && $_POST['dang'] == 'dang2') echo 'checked'; ?>>
+                    <input type="radio" name="dang" id="dang2" value="dang2" <?php if (isset($_POST['dang']) && $_POST['dang'] == 'dang2') {
+                        echo 'checked';
+                    } ?>>
                     <label for="dang2">Trả lời nhiều lần có trừ điểm nếu trả lời sai (mỗi lần sai trừ 5% số điểm, tối đa 19 lần)</label> <br>
-                    <input type="radio" name="dang" id="dang3" value="dang3" <?php if (isset($_POST['dang']) && $_POST['dang'] == 'dang3') echo 'checked'; ?>>
+                    <input type="radio" name="dang" id="dang3" value="dang3" <?php if (isset($_POST['dang']) && $_POST['dang'] == 'dang3') {
+                        echo 'checked';
+                    } ?>>
                     <label for="dang3">Trả lời nhiều lần không trừ điểm</label> <br>
                     <?php
                     if (isset($_POST['gui']) && empty($_POST['dang'])) {
                         echo "<span class=\"error\">Vui lòng chọn</span>";
                     }
-                    ?>
+?>
                 </div>
             </div>
             <label>Yêu cầu:</label>
             <div style="display: block">
                 <div>
-                    <input type="radio" name="yeuCau" id="yeuCau1" value="yeuCau1" <?php if (isset($_POST['yeuCau']) && $_POST['yeuCau'] == 'yeuCau1') echo 'checked'; ?>>
+                    <input type="radio" name="yeuCau" id="yeuCau1" value="yeuCau1" <?php if (isset($_POST['yeuCau']) && $_POST['yeuCau'] == 'yeuCau1') {
+                        echo 'checked';
+                    } ?>>
                     <label for="yeuCau1">Sắp xếp tăng dần</label> <br>
-                    <input type="radio" name="yeuCau" id="yeuCau2" value="yeuCau2" <?php if (isset($_POST['yeuCau']) && $_POST['yeuCau'] == 'yeuCau2') echo 'checked'; ?>>
+                    <input type="radio" name="yeuCau" id="yeuCau2" value="yeuCau2" <?php if (isset($_POST['yeuCau']) && $_POST['yeuCau'] == 'yeuCau2') {
+                        echo 'checked';
+                    } ?>>
                     <label for="yeuCau2">Sắp xếp giảm dần</label> <br>
                     <?php
                     if (isset($_POST['gui']) && empty($_POST['yeuCau'])) {
                         echo "<span class=\"error\">Vui lòng chọn</span>";
                     }
-                    ?>
+?>
                 </div>
             </div>
             <input type="submit" value="Gửi" name="gui">
@@ -76,11 +88,11 @@ session_start();
                     echo '<input type="submit" value="Xuất câu hỏi" name="gui1" onclick="showFormSubmit()">';
                 }
             }
-            if (isset($_POST['reset'])) {
-                header("Location: $_SERVER[PHP_SELF]");
-                exit();
-            }
-            ?>
+if (isset($_POST['reset'])) {
+    header("Location: $_SERVER[PHP_SELF]");
+    exit();
+}
+?>
 
         </form>
     </div>
